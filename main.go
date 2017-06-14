@@ -22,6 +22,8 @@ var (
 	types string
 	index string
 	selectedMode string
+	verboseMode bool
+	dryRunMode bool
 )
 
 func main()  {
@@ -31,8 +33,14 @@ func main()  {
 	events := event.GetEvents(selectedMode, input)
 	for _, eventObj := range events {
 		payload := eventObj.Json()
-		makeRequest(payload)
-		fmt.Println(payload)
+
+		if dryRunMode || verboseMode {
+			fmt.Println(payload)
+		}
+
+		if !dryRunMode {
+			makeRequest(payload)
+		}
 	}
 }
 
@@ -44,6 +52,8 @@ func init()  {
 	flag.StringVarP(&types, "type", "t", "log", "Index log type")
 	flag.StringVarP(&index, "index", "i", "", "Index name")
 	flag.StringVarP(&selectedMode, "rule", "r", "single_value", "Rule")
+	flag.BoolVarP(&verboseMode, "verbose", "v", false, "Verbose output")
+	flag.BoolVarP(&dryRunMode, "dry-run", "", false, "Enable dry-run mode (just output json, without make request)")
 }
 
 func makeRequest(payload string) {
@@ -55,8 +65,12 @@ func makeRequest(payload string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	responseData, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(responseData))
+
+	if verboseMode {
+		fmt.Println("Response: ", string(responseData))
+	}
 }
 
 func getInput() string {
