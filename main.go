@@ -2,7 +2,6 @@ package main
 
 import (
 	flag "github.com/ogier/pflag"
-	//"github.com/bentol/pipes/rules"
 	"bufio"
 	"os"
 	"github.com/bentol/pipes/event"
@@ -51,7 +50,7 @@ func init()  {
 	flag.StringVarP(&password, "password", "p", "", "Basic auth password")
 	flag.StringVarP(&types, "type", "t", "log", "Index log type")
 	flag.StringVarP(&index, "index", "i", "", "Index name")
-	flag.StringVarP(&selectedMode, "rule", "r", "single_value", "Rule")
+	flag.StringVarP(&selectedMode, "mode", "m", "single_value", "Mode (single_value|key_value)")
 	flag.BoolVarP(&verboseMode, "verbose", "v", false, "Verbose output")
 	flag.BoolVarP(&dryRunMode, "dry-run", "", false, "Enable dry-run mode (just output json, without make request)")
 }

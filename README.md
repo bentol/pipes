@@ -54,12 +54,12 @@ Usage of ./pipes:
     	Elasticsearch host (default "localhost")
   -i, --index string
     	Index name
+  -m, --mode string
+    	Mode (single_value|key_value) (default "single_value")
   -p, --password string
     	Basic auth password
   -P, --port string
     	Elasticsearch port (default "9200")
-  -r, --rule string
-    	Rule (default "single_value")
   -t, --type string
     	Index log type (default "log")
   -u, --user string
