@@ -44,4 +44,28 @@ will create 3 event, like this:
     "hostname": "my-host",
 }
 ```
+  
+**List of all options**
+```text
+Usage of ./pipes:
+  --dry-run
+    	Enable dry-run mode (just output json, without make request)
+  -h, --host string
+    	Elasticsearch host (default "localhost")
+  -i, --index string
+    	Index name
+  -p, --password string
+    	Basic auth password
+  -P, --port string
+    	Elasticsearch port (default "9200")
+  -r, --rule string
+    	Rule (default "single_value")
+  -t, --type string
+    	Index log type (default "log")
+  -u, --user string
+    	Basic auth username
+  -v, --verbose
+    	Verbose output
+```
+
 
