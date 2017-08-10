@@ -6,7 +6,7 @@ use case example:
 
 **load avg a linux machine**
 ```bash
-cat /proc/loadavg | awk '{print $1}' | ./pipes -i load-avg-load-index -v
+cat /proc/loadavg | awk '{print $1}' | ./pipes -i load-avg-load-index -h $host -v
 ```
 will produce
 ```json
@@ -19,7 +19,7 @@ will produce
 
 **/home directory size for each user**
 ```bash
-du -shBK  * | awk -v OFS='\t' '{print $2, $1}' | ./pipes -v -i home-dir-index
+du -shBK  * | awk -v OFS='\t' '{print $2, $1}' | ./pipes -m key_value -i home-dir-index -h $host -v
 ```
 will create 3 event, like this:
 ```json
